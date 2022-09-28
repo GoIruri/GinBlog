@@ -10,7 +10,10 @@ import (
 
 func Login(c *gin.Context) {
 	var data model.User
-	c.ShouldBindJSON(&data)
+	err := c.ShouldBindJSON(&data)
+	if err != nil {
+		return
+	}
 	var token string
 	var code int
 
